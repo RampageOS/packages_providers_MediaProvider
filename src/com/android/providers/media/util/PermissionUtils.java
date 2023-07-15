@@ -285,28 +285,6 @@ public class PermissionUtils {
         // Seems like it's a legacy app, so it has to pass the permission check
         return checkPermissionForPreflight(context, permission, pid, uid, packageName);
     }
-
-    /**
-     * Checks *only* App Ops.
-     */
-    private static boolean checkAppOp(@NonNull Context context,
-            @NonNull String op, int uid, @NonNull String packageName,
-            @Nullable String attributionTag, @Nullable String opMessage) {
-        final AppOpsManager appOps = context.getSystemService(AppOpsManager.class);
-        final int mode = appOps.noteOpNoThrow(op, uid, packageName, attributionTag, opMessage);
-        switch (mode) {
-            case AppOpsManager.MODE_ALLOWED:
-                return true;
-            case AppOpsManager.MODE_DEFAULT:
-            case AppOpsManager.MODE_IGNORED:
-            case AppOpsManager.MODE_ERRORED:
-                return false;
-            default:
-                throw new IllegalStateException(op + " has unknown mode " + mode);
-        }
-    }
-
-
     /**
      * Checks *only* App Ops, also returns true for legacy apps.
      */
