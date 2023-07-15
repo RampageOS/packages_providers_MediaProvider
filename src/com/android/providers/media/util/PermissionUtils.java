@@ -200,6 +200,9 @@ public class PermissionUtils {
                 || checkAppOp(
                         context, OPSTR_WRITE_MEDIA_VIDEO, uid, packageName, attributionTag,
                 generateAppOpMessage(packageName, sOpDescription.get()));
+            
+           }
+
      
      /* Returns {@code true} if any package for the given uid has request_install_packages app op.
      */

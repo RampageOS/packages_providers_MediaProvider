@@ -7941,6 +7941,8 @@ public class MediaProvider extends ContentProvider {
 
     private boolean isCallingPackageSystemGallery() {
         return mCallingIdentity.get().hasPermission(PERMISSION_IS_SYSTEM_GALLERY);
+    }
+    
     private int getCallingUidOrSelf() {
         return mCallingIdentity.get().uid;
     }
